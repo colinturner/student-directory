@@ -29,20 +29,33 @@ def input_students
   students
 end
 
+
+
 def print_header
   puts "The students of Villains Academy"
   puts "------------"
 end
 
-def print(students)
-  students.each_with_index do |student, index|
-      puts "#{index + 1}. #{student[:name]}, from #{student[:country]} (#{student[:cohort]} cohort)".center(60)
-  end
+
+
+def print(students)  # Pass in the students array, which is the returned value from input_students
+  cohorts = students.map {|student| student[:cohort]}   # Produce a new array, containing each cohort value from each hash in the students array
+    cohorts.uniq.each do |month|     # Ignore duplicate values for the months collected into the cohorts array in the line above
+      puts "#{month} cohort"    # puts those unique (non-duplicated) months, along with the word 'cohort' next to the month
+      students.each do |student|   # for each hash in the students array,
+        if student[:cohort] == month  # if the value stored under the :cohort key is precisely equal to the month
+          puts "#{student[:name]}"   # then puts the student's name value
+        end
+      end
+    end
 end
+
+
 
 def print_footer(names)
   puts "Overall, we have #{names.count} great students"
 end
+
 
 
 # Now we have to actually call the methods to make anything happen
