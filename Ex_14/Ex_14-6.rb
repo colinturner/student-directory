@@ -4,7 +4,7 @@ def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
   puts "3. Save the list"
-  puts "4. Load the list from students.csv"
+  puts "4. Load the list"
   puts "9. Exit" # 9 because we'll be adding more items
 end
 
@@ -99,7 +99,7 @@ def load_students(filename)
       add_students(name, cohort)
     end
   end
-  puts "Looking good! The list of students has been loaded from students.csv"
+  puts "Looking good! The list of students has been loaded from #{filename}"
 end
 
 def try_load_students
