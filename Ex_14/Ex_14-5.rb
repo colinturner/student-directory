@@ -90,7 +90,9 @@ def save_students
   puts "Success! The list of students by cohort was saved to the file #{filename}"
 end
 
-def load_students(filename = "students.csv")
+def load_students(filename)
+  puts "Please enter a file name to load:"
+  filename = STDIN.gets.chomp || filename = "students.csv"
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
